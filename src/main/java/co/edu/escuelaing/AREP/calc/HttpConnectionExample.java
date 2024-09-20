@@ -11,6 +11,12 @@ public class HttpConnectionExample {
     private static final String USER_AGENT = "Mozilla/5.0";
     private static final String GET_URL = "http://localhost:36000";
 
+    /**
+     * Procesa las peticiones del cliente para ser enviadas al servidor.
+     * @param request Peticion enviada desde el cliente
+     * @return La respuesta del servidor.
+     * @throws IOException En caso de no poder ejecutar la coneccion o algun error se manda la excepcion.
+     */
     public static String getResponse(String request) throws IOException {
 
         URL obj = new URL(GET_URL + request);

@@ -56,6 +56,11 @@ public class CalcReflexFacade {
         serverSocket.close();
     }
 
+    /**
+     * HTTP de respuesta OK con la respuesta del servidor como contenido.
+     * @param data Representa la respuesta del servdior en tipo JSON.
+     * @return HTTP de respuesta OK con un respuesta de tipo JSON.
+     */
     private static String getOkResponse(String data){
         return "HTTP/1.1 200 OK\r\n"
                 + "Content-Type: text/html\r\n"
@@ -63,7 +68,10 @@ public class CalcReflexFacade {
                 + data;
     }
 
-
+    /**
+     * Pagina del cliente browser en HTML.
+     * @return Documento HTML con la funcionalidades del cliente web.
+     */
     public static String htmlClient(){
         String htmlCode = "HTTP/1.1 200 OK\r\n"
                 + "Content-Type: text/html\r\n"
@@ -78,8 +86,8 @@ public class CalcReflexFacade {
                 "    <body>\n" +
                 "        <h1>Form with GET</h1>\n" +
                 "        <form action=\"/hello\">\n" +
-                "            <label for=\"name\">Name:</label><br>\n" +
-                "            <input type=\"text\" id=\"name\" name=\"name\" value=\"John\"><br><br>\n" +
+                "            <label for=\"name\">Operation:</label><br>\n" +
+                "            <input type=\"text\" id=\"name\" name=\"name\" value=\"max\"><br><br>\n" +
                 "            <input type=\"button\" value=\"Submit\" onclick=\"loadGetMsg()\">\n" +
                 "        </form> \n" +
                 "        <div id=\"getrespmsg\"></div>\n" +
@@ -100,7 +108,12 @@ public class CalcReflexFacade {
                 "</html>";
         return htmlCode;
     }
-
+    /**
+     * Extrae la URI de la peticion que se envio.
+     * @param firstLine primera linea de la peticion que se envio.
+     * @return URI con la informacion de la peticion.
+     * @throws URISyntaxException Si la cadena es invalida.
+     */
     private static URI getRequestURL(String firstLine) throws URISyntaxException {
         String url = firstLine.split(" ")[1];
         return new URI(url);
